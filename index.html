@@ -35,6 +35,9 @@
 <body>
   <a href="#main-content" class="skip-link">メインコンテンツへ</a>
 
+  <!-- Scroll Progress Bar -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
   <!-- Floating Particles -->
   <div class="particles" id="particles"></div>
 
@@ -213,7 +216,7 @@
           <div class="lifestyle-card-content">
             <span class="lifestyle-category" lang="en">Food</span>
             <h3>グルテンフリーの<br>美味しいレシピ</h3>
-            <p>体に優しくて美味しい、簡単レシピ集。</p>
+            <p>腸活サラダや作り置きできるグルテンフリーパンケーキなど、忙しい朝でも10分で作れる体に優しいレシピを厳選してご紹介します。</p>
             <a href="#" class="read-more" lang="en">Read More →</a>
           </div>
         </article>
@@ -224,7 +227,7 @@
           <div class="lifestyle-card-content">
             <span class="lifestyle-category" lang="en">Books</span>
             <h3>心が整う<br>5冊の本</h3>
-            <p>読むだけで心が軽くなる、おすすめ本。</p>
+            <p>マインドフルネス・自己肯定感・人間関係……心がざわついたとき、そっと寄り添ってくれる5冊をセレクト。読み終えたとき、きっと空が広く見えます。</p>
             <a href="#" class="read-more" lang="en">Read More →</a>
           </div>
         </article>
@@ -235,7 +238,7 @@
           <div class="lifestyle-card-content">
             <span class="lifestyle-category" lang="en">Travel</span>
             <h3>週末リトリート<br>おすすめスポット</h3>
-            <p>日常を離れてリフレッシュできる場所。</p>
+            <p>都心から2時間以内、自然に囲まれた週末リトリートスポットを厳選。温泉・森林浴・瞑想ができる宿まで、日常をそっと手放せる場所をご案内します。</p>
             <a href="#" class="read-more" lang="en">Read More →</a>
           </div>
         </article>
@@ -434,6 +437,12 @@
   </footer>
 
   <button class="back-to-top" id="backToTop" aria-label="ページトップへ戻る">↑</button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="画像を拡大表示">
+    <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Back to Top Button ----------
   initBackToTop();
+
+  // ---------- Scroll Progress Bar ----------
+  initProgressBar();
+
+  // ---------- Gallery Lightbox ----------
+  initLightbox();
 });
 
 /* ---------- Particles ---------- */
@@ -302,6 +308,53 @@ function initActiveNavLink() {
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
     });
+  });
+}
+
+/* ---------- Scroll Progress Bar ---------- */
+function initProgressBar() {
+  const bar = document.getElementById('progressBar');
+  if (!bar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = `${progress}%`;
+  });
+}
+
+/* ---------- Gallery Lightbox ---------- */
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  if (!lightbox) return;
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.style.cursor = 'zoom-in';
+    item.addEventListener('click', () => {
+      const img = item.querySelector('.gallery-img');
+      if (!img) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
   });
 }
 
